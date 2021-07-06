@@ -163,6 +163,184 @@ git push [alias] [branch]
 
 # 7、总结
 
+## 1、git基础设置
+
+### 1、设置用户名
+
+```sh
+git config --global user.name "xiaobear"
+```
+
+### 2、设置邮箱
+
+```sh
+git config --global user.email "xxxx.@gmail.com"
+```
+
+### 3、查看配置
+
+```sh
+git config --list
+```
+
+## 2、创建版本库
+
+### 1、克隆远程版本库
+
+```sh
+git clone 地址
+```
+
+### 2、初始化本地版本库
+
+```sh
+git init
+```
+
+## 3、修改和提交
+
+### 1、查看状态
+
+```sh
+git status
+```
+
+### 2、查看变更内容
+
+```sh
+git diff
+```
+
+### 3、跟踪所有改动过的文件
+
+```sh
+git add -A
+```
+
+### 4、跟踪指定文件
+
+```sh
+git add <file>
+```
+
+### 5、文件改名
+
+```sh
+git mv <oldfile> <newfile>
+```
+
+### 6、删除文件
+
+```sh
+git rm <file>
+```
+
+### 7、停止跟踪文件但不删除
+
+```sh
+git rm --cache <file>
+```
+
+### 8、提交所有更改过的文件
+
+```sh
+git commit -m "commit message"
+```
+
+### 9、修改最后一次更改
+
+```sh
+git commit --amend
+```
+
+## 4、查看提交历史
+
+### 1、查看提交历史
+
+```sh
+git log
+```
+
+### 2、查看指定文件提交历史
+
+```sh
+git log -p <file>
+```
+
+### 3、以列表方式查看指定文件提交历史
+
+```sh
+git blame <file>
+```
+
+## 5、撤销
+
+### 1、撤销工作目录中所有未提交文件的修改内容
+
+```sh
+git reset -hard	HEAD
+```
+
+### 2、撤销指定未提交文件的修改内容
+
+```sh
+git checkout HEAD <file>
+```
+
+### 3、撤销指定的提交
+
+```sh
+git revert <commit>
+```
+
+## 6、分支与标签
+
+### 1、显示本地所有分支
+
+```sh
+git branch
+```
+
+### 2、切换到指定分支或标签
+
+```sh
+git checkout <branch/tag>
+```
+
+### 3、创建新分支
+
+```sh
+git branch <new branch>
+```
+
+### 4、删除本地分支
+
+```sh
+git branch -d <branch>
+```
+
+### 5、列出本地所有标签
+
+```sh
+git tag
+```
+
+### 6、基于最新提交创建标签
+
+```sh
+git tag <tagname>
+```
+
+### 7、删除标签
+
+```sh
+git tag -d <tagname>
+```
+
+
+
+
+
 我们省去那些概念以及下载，就我们常用的来说就是8步：
 
 - gitHub或gitee创建仓库
@@ -202,3 +380,4 @@ git push [alias] [branch]
 	```
 
 	
+

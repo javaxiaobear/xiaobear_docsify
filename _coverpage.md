@@ -6,5 +6,5 @@
 
 [Blog](http://www.xiaobear.cn/)
 
-[开始阅读](README.md)
+[开始阅读 →](README.md)
 

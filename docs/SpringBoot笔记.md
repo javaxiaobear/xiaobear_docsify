@@ -161,15 +161,14 @@ public class HelloController {
     <version>1.5.9.RELEASE</version>
 </parent>
 
-他的父项目是
+<!--他的父项目是-->
 <parent>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-dependencies</artifactId>
-  <version>1.5.9.RELEASE</version>
-  <relativePath>../../spring-boot-dependencies</relativePath>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-dependencies</artifactId>
+    <version>1.5.9.RELEASE</version>
+    <relativePath>../../spring-boot-dependencies</relativePath>
 </parent>
-他来真正管理Spring Boot应用里面的所有依赖版本；
-
+<!--他来真正管理Spring Boot应用里面的所有依赖版本；-->
 ```
 
 Spring Boot的版本仲裁中心；
@@ -185,13 +184,11 @@ Spring Boot的版本仲裁中心；
 </dependency>
 ```
 
-**spring-boot-starter**-==web==：
+**spring-boot-starter**-**web**：spring-boot-starter：spring-boot场景启动器；帮我们导入了web模块正常运行所依赖的组件；
 
-​	spring-boot-starter：spring-boot场景启动器；帮我们导入了web模块正常运行所依赖的组件；
+Spring Boot将所有的功能场景都抽取出来，做成一个个的starters（启动器），只需要在项目里面引入这些starter相关场景的所有依赖
 
-
-
-Spring Boot将所有的功能场景都抽取出来，做成一个个的starters（启动器），只需要在项目里面引入这些starter相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景的启动器
+都会导入进来。要用什么功能就导入什么场景的启动器
 
 
 
@@ -213,7 +210,7 @@ public class HelloWorldMainApplication {
 
 ```
 
-@**SpringBootApplication**:    Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类，SpringBoot就应该运行这个类的main方法来启动SpringBoot应用；
+@**SpringBootApplication**：Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类，SpringBoot就应该运行这个类的main方法来启动SpringBoot应用；
 
 
 
@@ -230,17 +227,9 @@ public class HelloWorldMainApplication {
 public @interface SpringBootApplication {
 ```
 
-@**SpringBootConfiguration**:Spring Boot的配置类；
-
-​		标注在某个类上，表示这是一个Spring Boot的配置类；
-
-​		@**Configuration**:配置类上来标注这个注解；
-
-​			配置类 -----  配置文件；配置类也是容器中的一个组件；@Component
-
-
-
-@**EnableAutoConfiguration**：开启自动配置功能；
+- @**SpringBootConfiguration**：Spring Boot的配置类；标注在某个类上，表示这是一个Spring Boot的配置类；
+- @**Configuration**：配置类上来标注这个注解；配置类 -----  配置文件；配置类也是容器中的一个组件；@Component
+- @**EnableAutoConfiguration**：开启自动配置功能；
 
 ​		以前我们需要配置的东西，Spring Boot帮我们自动配置；@**EnableAutoConfiguration**告诉SpringBoot开启自动配置功能；这样自动配置才能生效；
 
@@ -250,13 +239,13 @@ public @interface SpringBootApplication {
 public @interface EnableAutoConfiguration {
 ```
 
-​      	@**AutoConfigurationPackage**：自动配置包
+@**AutoConfigurationPackage**：自动配置包
 
-​		@**Import**(AutoConfigurationPackages.Registrar.class)：
+@**Import**(AutoConfigurationPackages.Registrar.class)：
 
 ​		Spring的底层注解@Import，给容器中导入一个组件；导入的组件由AutoConfigurationPackages.Registrar.class；
 
-==将主配置类（@SpringBootApplication标注的类）的所在包及下面所有子包里面的所有组件扫描到Spring容器；==
+**将主配置类（@SpringBootApplication标注的类）的所在包及下面所有子包里面的所有组件扫描到Spring容器；**
 
 ​	@**Import**(EnableAutoConfigurationImportSelector.class)；
 
@@ -270,21 +259,13 @@ public @interface EnableAutoConfiguration {
 
 有了自动配置类，免去了我们手动编写配置注入功能组件等的工作；
 
-​		SpringFactoriesLoader.loadFactoryNames(EnableAutoConfiguration.class,classLoader)；
+```java
+SpringFactoriesLoader.loadFactoryNames(EnableAutoConfiguration.class,classLoader)；
+```
 
-
-
-==Spring Boot在启动的时候从类路径下的META-INF/spring.factories中获取EnableAutoConfiguration指定的值，将这些值作为自动配置类导入到容器中，自动配置类就生效，帮我们进行自动配置工作；==以前我们需要自己配置的东西，自动配置类都帮我们；
+**Spring Boot在启动的时候从类路径下的META-INF/spring.factories中获取EnableAutoConfiguration指定的值，将这些值作为自动配置类导入到容器中，自动配置类就生效，帮我们进行自动配置工作；**以前我们需要自己配置的东西，自动配置类都帮我们；
 
 J2EE的整体整合解决方案和自动配置都在spring-boot-autoconfigure-1.5.9.RELEASE.jar；
-
-
-
-​		
-
-==Spring注解版（谷粒学院）==
-
-
 
 ## 6、使用Spring Initializer快速创建Spring Boot项目
 
@@ -316,21 +297,19 @@ IDE都支持使用Spring的项目创建向导快速创建一个Spring Boot项目
 
 SpringBoot使用一个全局的配置文件，配置文件名是固定的；
 
-•application.properties
+- application.properties
 
-•application.yml
+- application.yml
 
-
-
-配置文件的作用：修改SpringBoot自动配置的默认值；SpringBoot在底层都给我们自动配置好；
+配置文件的作用：**修改SpringBoot自动配置的默认值；SpringBoot在底层都给我们自动配置好；**
 
 
 
 YAML（YAML Ain't Markup Language）
 
-​	YAML  A Markup Language：是一个标记语言
-
-​	YAML   isn't Markup Language：不是一个标记语言；
+> YAML  A Markup Language：是一个标记语言
+>
+> YAML   isn't Markup Language：不是一个标记语言；
 
 标记语言：
 
@@ -365,8 +344,8 @@ k:(空格)v：表示一对键值对（空格必须有）；
 
 ```yaml
 server:
-    port: 8081
-    path: /hello
+	port: 8081
+	path: /hello
 ```
 
 属性和值也是大小写敏感；
@@ -481,11 +460,11 @@ public class Person {
 
 ```xml
 <!--导入配置文件处理器，配置文件进行绑定就会有提示-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
-		</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-configuration-processor</artifactId>
+    <optional>true</optional>
+</dependency>
 ```
 
 #### 1、properties配置文件在idea中默认utf-8可能会乱码
@@ -543,7 +522,7 @@ public class Person {
 
 
 
-#### 4、@PropertySource&@ImportResource&@Bean
+#### 4、@PropertySource & @ImportResource  & @Bean
 
 @**PropertySource**：加载指定的配置文件；
 
@@ -590,7 +569,7 @@ Spring Boot里面没有Spring的配置文件，我们自己编写的配置文件
 
 ```java
 @ImportResource(locations = {"classpath:beans.xml"})
-导入Spring的配置文件让其生效
+/导入Spring的配置文件让其生效
 ```
 
 
@@ -734,7 +713,7 @@ SpringBoot会从这四个位置全部加载主配置文件；**互补配置**；
 
 
 
-==我们还可以通过spring.config.location来改变默认的配置文件位置==
+**我们还可以通过spring.config.location来改变默认的配置文件位置**
 
 **项目打包好以后，我们可以使用命令行参数的形式，启动项目的时候来指定配置文件的新位置；指定配置文件和默认加载的这些配置文件共同起作用形成互补配置；**
 
@@ -742,7 +721,7 @@ java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --spring.config.location=G
 
 ## 7、外部配置加载顺序
 
-**==SpringBoot也可以从以下位置加载配置； 优先级从高到低；高优先级的配置覆盖低优先级的配置，所有的配置会形成互补配置==**
+****SpringBoot也可以从以下位置加载配置； 优先级从高到低；高优先级的配置覆盖低优先级的配置，所有的配置会形成互补配置****
 
 **1.命令行参数**
 
@@ -764,9 +743,9 @@ java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --server.port=8087  --serv
 
 
 
-==**由jar包外向jar包内进行寻找；**==
+****由jar包外向jar包内进行寻找；****
 
-==**优先加载带profile**==
+****优先加载带profile****
 
 **6.jar包外部的application-{profile}.properties或application.yml(带spring.profile)配置文件**
 
@@ -774,7 +753,7 @@ java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --server.port=8087  --serv
 
 
 
-==**再来加载不带profile**==
+****再来加载不带profile****
 
 **8.jar包外部的application.properties或application.yml(不带spring.profile)配置文件**
 
@@ -800,7 +779,7 @@ java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --server.port=8087  --serv
 
 ### 1、**自动配置原理：**
 
-1）、SpringBoot启动的时候加载主配置类，开启了自动配置功能 ==@EnableAutoConfiguration==
+1）、SpringBoot启动的时候加载主配置类，开启了自动配置功能 **@EnableAutoConfiguration**
 
 **2）、@EnableAutoConfiguration 作用：**
 
@@ -815,12 +794,12 @@ java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --server.port=8087  --serv
     扫描所有jar包类路径下  META-INF/spring.factories
     把扫描到的这些文件的内容包装成properties对象
     从properties中获取到EnableAutoConfiguration.class类（类名）对应的值，然后把他们添加在容器中
-
+    
     ```
 
     
 
-**==将 类路径下  META-INF/spring.factories 里面配置的所有EnableAutoConfiguration的值加入到了容器中；==**
+****将 类路径下  META-INF/spring.factories 里面配置的所有EnableAutoConfiguration的值加入到了容器中；****
 
 ```properties
 # Auto Configure
@@ -1030,12 +1009,12 @@ xxxxProperties:封装配置文件中相关属性；
 
 我们怎么知道哪些自动配置类生效；
 
-**==我们可以通过启用  debug=true属性；来让控制台打印自动配置报告==**，这样我们就可以很方便的知道哪些自动配置类生效；
+****我们可以通过启用  debug=true属性；来让控制台打印自动配置报告****，这样我们就可以很方便的知道哪些自动配置类生效；
 
 ```java
-=========================
+************************=
 AUTO-CONFIGURATION REPORT
-=========================
+************************=
 
 
 Positive matches:（自动配置类启用的）
@@ -1103,7 +1082,7 @@ JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j....
 
 SpringBoot：底层是Spring框架，Spring框架默认是用JCL；‘
 
-​	**==SpringBoot选用 SLF4j和logback；==**
+​	****SpringBoot选用 SLF4j和logback；****
 
 
 
@@ -1143,11 +1122,11 @@ a（slf4j+logback）: Spring（commons-logging）、Hibernate（jboss-logging）
 
 **如何让系统中所有的日志都统一到slf4j；**
 
-==1、将系统中其他日志框架先排除出去；==
+**1、将系统中其他日志框架先排除出去；**
 
-==2、用中间包来替换原有的日志框架；==
+**2、用中间包来替换原有的日志框架；**
 
-==3、我们导入slf4j其他的实现==
+**3、我们导入slf4j其他的实现**
 
 
 
@@ -1213,7 +1192,7 @@ public abstract class LogFactory {
 		</dependency>
 ```
 
-**==SpringBoot能自动适配所有的日志，而且底层使用slf4j+logback的方式记录日志，引入其他框架的时候，只需要把这个框架依赖的日志框架排除掉即可；==**
+****SpringBoot能自动适配所有的日志，而且底层使用slf4j+logback的方式记录日志，引入其他框架的时候，只需要把这个框架依赖的日志框架排除掉即可；****
 
 ## 4、日志使用；
 
@@ -1270,7 +1249,7 @@ logging.path=/spring/log
 #  在控制台输出的日志的格式
 logging.pattern.console=%d{yyyy-MM-dd} [%thread] %-5level %logger{50} - %msg%n
 # 指定文件中日志输出的格式
-logging.pattern.file=%d{yyyy-MM-dd} === [%thread] === %-5level === %logger{50} ==== %msg%n
+logging.pattern.file=%d{yyyy-MM-dd} **= [%thread] **= %-5level **= %logger{50} **** %msg%n
 ```
 
 | logging.file | logging.path | Example  | Description             |
@@ -1319,7 +1298,7 @@ logback.xml：直接就被日志框架识别了；
                 <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ----> [%thread] ---> %-5level %logger{50} - %msg%n</pattern>
             </springProfile>
             <springProfile name="!dev">
-                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ==== [%thread] ==== %-5level %logger{50} - %msg%n</pattern>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} **** [%thread] **** %-5level %logger{50} - %msg%n</pattern>
             </springProfile>
         </layout>
     </appender>
@@ -1492,7 +1471,7 @@ public class ResourceProperties implements ResourceLoaderAware {
 
 ```
 
-==1）、所有 /webjars/** ，都去 classpath:/META-INF/resources/webjars/ 找资源；==
+**1）、所有 /webjars/** ，都去 classpath:/META-INF/resources/webjars/ 找资源；**
 
 ​	webjars：以jar包的方式引入静态资源；
 
@@ -1513,7 +1492,7 @@ localhost:8080/webjars/jquery/3.3.1/jquery.js
 
 
 
-==2）、"/**" 访问当前项目的任何资源，都去（静态资源的文件夹）找映射==
+**2）、"/**" 访问当前项目的任何资源，都去（静态资源的文件夹）找映射**
 
 ```
 "classpath:/META-INF/resources/", 
@@ -1523,13 +1502,13 @@ localhost:8080/webjars/jquery/3.3.1/jquery.js
 "/"：当前项目的根路径
 ```
 
-localhost:8080/abc ===  去静态资源文件夹里面找abc
+localhost:8080/abc **=  去静态资源文件夹里面找abc
 
-==3）、欢迎页； 静态资源文件夹下的所有index.html页面；被"/**"映射；==
+**3）、欢迎页； 静态资源文件夹下的所有index.html页面；被"/**"映射；**
 
 ​	localhost:8080/   找index页面
 
-==4）、所有的 **/favicon.ico  都是在静态资源文件下找；==
+**4）、所有的 **/favicon.ico  都是在静态资源文件下找；**
 
 
 
@@ -1684,7 +1663,7 @@ Boolean operations:（布尔运算）
     Boolean negation (unary operator): ! , not
 Comparisons and equality:（比较运算）
     Comparators: > , < , >= , <= ( gt , lt , ge , le )
-    Equality operators: == , != ( eq , ne )
+    Equality operators: ** , != ( eq , ne )
 Conditional operators:条件运算（三元运算符）
     If-then: (if) ? (then)
     If-then-else: (if) ? (then) : (else)
@@ -1701,12 +1680,12 @@ https://docs.spring.io/spring-boot/docs/1.5.10.RELEASE/reference/htmlsingle/#boo
 
 Spring Boot 自动配置好了SpringMVC
 
-以下是SpringBoot对SpringMVC的默认配置:**==（WebMvcAutoConfiguration）==**
+以下是SpringBoot对SpringMVC的默认配置:****（WebMvcAutoConfiguration）****
 
 - Inclusion of `ContentNegotiatingViewResolver` and `BeanNameViewResolver` beans.
   - 自动配置了ViewResolver（视图解析器：根据方法的返回值得到视图对象（View），视图对象决定如何渲染（转发？重定向？））
   - ContentNegotiatingViewResolver：组合所有的视图解析器的；
-  - ==如何定制：我们可以自己给容器中添加一个视图解析器；自动的将其组合进来；==
+  - **如何定制：我们可以自己给容器中添加一个视图解析器；自动的将其组合进来；**
 
 - Support for serving static resources, including support for WebJars (see below).静态资源文件夹路径,webjars
 
@@ -1719,7 +1698,7 @@ Spring Boot 自动配置好了SpringMVC
 - 自动注册了 of `Converter`, `GenericConverter`, `Formatter` beans.
 
   - Converter：转换器；  public String hello(User user)：类型转换使用Converter
-  - `Formatter`  格式化器；  2017.12.17===Date；
+  - `Formatter`  格式化器；  2017.12.17**=Date；
 
 ```java
 		@Bean
@@ -1729,7 +1708,7 @@ Spring Boot 自动配置好了SpringMVC
 		}
 ```
 
-​	==自己添加的格式化器转换器，我们只需要放在容器中即可==
+​	**自己添加的格式化器转换器，我们只需要放在容器中即可**
 
 - Support for `HttpMessageConverters` (see below).
 
@@ -1737,7 +1716,7 @@ Spring Boot 自动配置好了SpringMVC
 
   - `HttpMessageConverters` 是从容器中确定；获取所有的HttpMessageConverter；
 
-    ==自己给容器中添加HttpMessageConverter，只需要将自己的组件注册容器中（@Bean,@Component）==
+    **自己给容器中添加HttpMessageConverter，只需要将自己的组件注册容器中（@Bean,@Component）**
 
     
 
@@ -1745,11 +1724,11 @@ Spring Boot 自动配置好了SpringMVC
 
 - Automatic use of a `ConfigurableWebBindingInitializer` bean (see below).
 
-  ==我们可以配置一个ConfigurableWebBindingInitializer来替换默认的；（添加到容器）==
+  **我们可以配置一个ConfigurableWebBindingInitializer来替换默认的；（添加到容器）**
 
   ```
   初始化WebDataBinder；
-  请求数据=====JavaBean；
+  请求数据****=JavaBean；
   ```
 
 **org.springframework.boot.autoconfigure.web：web的所有自动场景；**
@@ -1770,7 +1749,7 @@ If you want to take complete control of Spring MVC, you can add your own `@Confi
     </mvc:interceptors>
 ```
 
-**==编写一个配置类（@Configuration），是WebMvcConfigurerAdapter类型；不能标注@EnableWebMvc==**;
+****编写一个配置类（@Configuration），是WebMvcConfigurerAdapter类型；不能标注@EnableWebMvc****;
 
 既保留了所有的自动配置，也能用我们扩展的配置；
 
@@ -2037,7 +2016,7 @@ public class MessageSourceAutoConfiguration {
 		@ConditionalOnProperty(prefix = "spring.mvc", name = "locale")
 		public LocaleResolver localeResolver() {
 			if (this.mvcProperties
-					.getLocaleResolver() == WebMvcProperties.LocaleResolver.FIXED) {
+					.getLocaleResolver() ** WebMvcProperties.LocaleResolver.FIXED) {
 				return new FixedLocaleResolver(this.mvcProperties.getLocale());
 			}
 			AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
@@ -2119,7 +2098,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Object user = request.getSession().getAttribute("loginUser");
-        if(user == null){
+        if(user ** null){
             //未登陆，返回登陆页面
             request.setAttribute("msg","没有权限请先登陆");
             request.getRequestDispatcher("/index.html").forward(request,response);
@@ -2269,7 +2248,7 @@ insert的公共片段在div标签中
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link active"
-                   th:class="${activeUri=='main.html'?'nav-link active':'nav-link'}"
+                   th:class="${activeUri**'main.html'?'nav-link active':'nav-link'}"
                    href="#" th:href="@{/main.html}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -2362,11 +2341,11 @@ insert的公共片段在div标签中
     <div class="form-group">
         <label>Gender</label><br/>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="gender" value="1" th:checked="${emp!=null}?${emp.gender==1}">
+            <input class="form-check-input" type="radio" name="gender" value="1" th:checked="${emp!=null}?${emp.gender**1}">
             <label class="form-check-label">男</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="gender" value="0" th:checked="${emp!=null}?${emp.gender==0}">
+            <input class="form-check-input" type="radio" name="gender" value="0" th:checked="${emp!=null}?${emp.gender**0}">
             <label class="form-check-label">女</label>
         </div>
     </div>
@@ -2374,7 +2353,7 @@ insert的公共片段在div标签中
         <label>department</label>
         <!--提交的是部门的id-->
         <select class="form-control" name="department.id">
-            <option th:selected="${emp!=null}?${dept.id == emp.department.id}" th:value="${dept.id}" th:each="dept:${depts}" th:text="${dept.departmentName}">1</option>
+            <option th:selected="${emp!=null}?${dept.id ** emp.department.id}" th:value="${dept.id}" th:each="dept:${depts}" th:text="${dept.departmentName}">1</option>
         </select>
     </div>
     <div class="form-group">
@@ -2392,7 +2371,7 @@ insert的公共片段在div标签中
     <td th:text="${emp.id}"></td>
     <td>[[${emp.lastName}]]</td>
     <td th:text="${emp.email}"></td>
-    <td th:text="${emp.gender}==0?'女':'男'"></td>
+    <td th:text="${emp.gender}**0?'女':'男'"></td>
     <td th:text="${emp.department.departmentName}"></td>
     <td th:text="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}"></td>
     <td>
@@ -2474,7 +2453,7 @@ public class BasicErrorController extends AbstractErrorController {
         
         //去哪个页面作为错误页面；包含页面地址和页面内容
 		ModelAndView modelAndView = resolveErrorView(request, response, status, model);
-		return (modelAndView == null ? new ModelAndView("error", model) : modelAndView);
+		return (modelAndView ** null ? new ModelAndView("error", model) : modelAndView);
 	}
 
 	@RequestMapping
@@ -2505,7 +2484,7 @@ public class BasicErrorController extends AbstractErrorController {
 	public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status,
 			Map<String, Object> model) {
 		ModelAndView modelAndView = resolve(String.valueOf(status), model);
-		if (modelAndView == null && SERIES_VIEWS.containsKey(status.series())) {
+		if (modelAndView ** null && SERIES_VIEWS.containsKey(status.series())) {
 			modelAndView = resolve(SERIES_VIEWS.get(status.series()), model);
 		}
 		return modelAndView;
@@ -2966,7 +2945,7 @@ private void postProcessBeforeInitialization(
 }
 
 private Collection<EmbeddedServletContainerCustomizer> getCustomizers() {
-    if (this.customizers == null) {
+    if (this.customizers ** null) {
         // Look up does not include the parent context
         this.customizers = new ArrayList<EmbeddedServletContainerCustomizer>(
             this.beanFactory
@@ -3090,7 +3069,7 @@ EmbeddedServletContainerFactory containerFactory = getEmbeddedServletContainerFa
 
 **先启动嵌入式的Servlet容器，再将ioc容器中剩下没有创建出的对象获取出来；**
 
-**==IOC容器启动创建嵌入式的Servlet容器==**
+****IOC容器启动创建嵌入式的Servlet容器****
 
 
 
@@ -3257,7 +3236,7 @@ public ConfigurableApplicationContext run(String... args) {
 }
 ```
 
-**==启动Servlet容器，再启动SpringBoot应用==**
+****启动Servlet容器，再启动SpringBoot应用****
 
 
 
@@ -3315,7 +3294,7 @@ docker容器(Container)：镜像启动后的实例称为一个容器；容器是
 
 ​	5）、设置虚拟机网络；
 
-​		桥接网络===选好网卡====接入网线；
+​		桥接网络**=选好网卡****接入网线；
 
 ​	6）、设置好网络以后使用命令重启虚拟机的网络
 
@@ -4542,7 +4521,7 @@ Shiro以Shiro开发团队所谓的“应用程序安全性的四个基石”为�
            //连接真实的数据库
            UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
            User user = userService.queryUserByName(usernamePasswordToken.getUsername());
-           if (user == null) {
+           if (user ** null) {
                return null;
            }
            Subject subject1 = SecurityUtils.getSubject();
@@ -4689,7 +4668,7 @@ Shiro以Shiro开发团队所谓的“应用程序安全性的四个基石”为�
      <h1>hello xiaobear</h1>
      <p th:text="${msg}"></p>
      <hr>
-     <div th:if="${session.LoginUser==null}">
+     <div th:if="${session.LoginUser**null}">
          <a th:href="@{/tologin}">登录</a>
      </div>
      <div shiro:hasPermission="user:add">
@@ -4755,7 +4734,7 @@ Shiro以Shiro开发团队所谓的“应用程序安全性的四个基石”为�
 ## 3、Swagger
 
 - 号称世界上最流行的Api框架
-- RestFul Api 文档在线自动生成工具-->==Api文档与Api定义同步更新==
+- RestFul Api 文档在线自动生成工具-->**Api文档与Api定义同步更新**
 - 直接运行，可以在线测试API接口
 - 支持多种语言（Java、php）
 
@@ -4974,7 +4953,7 @@ public class HelloController {
     }
 ```
 
-**注：**==发布的时候，关闭Swagger！！！==
+**注：****发布的时候，关闭Swagger！！！**
 
 ## 4、任务
 
@@ -5114,9 +5093,9 @@ public class HelloController {
 
 ![image-20200331124428849](https://raw.githubusercontent.com/yhx1001/PicGo/img/image-20200331124428849.png)
 
->  一句话：==ZooKeeper 是一个分布式协调技术、高性能的，开源的分布式系统的协调(Coordination)服务，是 Google的 Chubby 一个开源的实现，是 Hadoop 和 Hbase 的重要组件。它是一个为分布式应用程序一致性和分布式协调技术服务的软件==
+>  一句话：**ZooKeeper 是一个分布式协调技术、高性能的，开源的分布式系统的协调(Coordination)服务，是 Google的 Chubby 一个开源的实现，是 Hadoop 和 Hbase 的重要组件。它是一个为分布式应用程序一致性和分布式协调技术服务的软件**
 
-==**ZooKeeper=类似Unix 文件系统+通知机制+Znode 节点**==
+****ZooKeeper=类似Unix 文件系统+通知机制+Znode 节点****
 
 **作用：服务注册+分布式系统的一致性通知协调**
 
@@ -5196,7 +5175,7 @@ Leader同步所有最新数据，然后确定自己能够对外服务的起始�
 
 **客户端连接端口**，监听客户端连接的端口。
 
-==注：==
+**注：**
 
 启动Zookeeper 服务之前需要先安装好Java 环境
 
@@ -6081,8 +6060,8 @@ https://codecentric.github.io/spring-boot-admin/2.1.6/#getting-started
     				</div>
     				<div>
     					<div v-if="local.log.status != 0">状态：{{local.log.message}}</div>
-    					<div v-if="local.log.status === 200">文件名：{{local.log.fileName}}</div>
-    					<div v-if="local.log.status === 200">文件路径：{{local.log.filePath}}</div>
+    					<div v-if="local.log.status **= 200">文件名：{{local.log.fileName}}</div>
+    					<div v-if="local.log.status **= 200">文件路径：{{local.log.filePath}}</div>
     				</div>
     			</Card>
     		</i-col>
@@ -6112,8 +6091,8 @@ https://codecentric.github.io/spring-boot-admin/2.1.6/#getting-started
     				</div>
     				<div>
     					<div v-if="yun.log.status != 0">状态：{{yun.log.message}}</div>
-    					<div v-if="yun.log.status === 200">文件名：{{yun.log.fileName}}</div>
-    					<div v-if="yun.log.status === 200">文件路径：{{yun.log.filePath}}</div>
+    					<div v-if="yun.log.status **= 200">文件名：{{yun.log.fileName}}</div>
+    					<div v-if="yun.log.status **= 200">文件路径：{{yun.log.filePath}}</div>
     				</div>
     			</Card>
     		</i-col>
@@ -6164,7 +6143,7 @@ https://codecentric.github.io/spring-boot-admin/2.1.6/#getting-started
     			handleLocalSuccess(response) {
     				this.local.file = null;
     				this.local.loadingStatus = false;
-    				if (response.code === 200) {
+    				if (response.code **= 200) {
     					this.$Message.success(response.message);
     					this.local.log.status = response.code;
     					this.local.log.message = response.message;
@@ -6198,7 +6177,7 @@ https://codecentric.github.io/spring-boot-admin/2.1.6/#getting-started
     			handleYunSuccess(response) {
     				this.yun.file = null;
     				this.yun.loadingStatus = false;
-    				if (response.code === 200) {
+    				if (response.code **= 200) {
     					this.$Message.success(response.message);
     					this.yun.log.status = response.code;
     					this.yun.log.message = response.message;

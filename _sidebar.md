@@ -1,13 +1,12 @@
 - **`Java基础`**
 - **`Java Web`**
 	- [JavaWeb](docs/JavaWeb学习笔记.md)
-- **`单体架构`**
+- **`开发框架`**
 	- [Spring设计模式](docs/Spring设计模式.md)
 	- [Spring](docs/)
 	- [Spring MVC](docs/SpringMVC-note.md)
 	- [Mybatis](docs/Mybatis-note.md)
 	- [Mybatis-plus](docs/MybatisPlus学习笔记.md)
-- **`面向服务架构`**
 - **`微服务架构`**
 	- [Spring Boot](docs/SpringBoot笔记.md)
 	- [Spring Cloud](docs/SpringCloud学习笔记.md)
@@ -15,6 +14,8 @@
 	- [Redis](docs/Redis学习笔记.md)
 - **`版本控制`**
   - [Git](docs/Git学习笔记.md)
+- **`Java开发工具`**
+  - [Java可视化报表](docs/Java报表数据可视化学习笔记.md)
 - **`Interview`**
 	- [Java核心技术及面试](docs/Java核心技术及面试学习笔记.md)
 - **`Solution`**

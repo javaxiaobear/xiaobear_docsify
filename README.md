@@ -21,8 +21,8 @@ Email：yhxiaobear@qq.com
 
 
 - 首次创建[xiaobear-docsify](https://yhx1001.github.io/xiaobear_docsify/)（2020.08.13）
-- 增加`Spring Cloud`文档--更新到`Spring Cloud GateWay`知识点（2021.05.24）
-- 增加`Java核心技术及面试`文档、常用解决办法文档（2021.05.24）
+- 增加`Spring Cloud`笔记--更新到`Spring Cloud GateWay`知识点（2021.05.24）
+- 增加`Java核心技术及面试`笔记、常用解决办法笔记（2021.05.24）
 - 更新`SpringCloud学习笔记`（2021.05.28）
   - `Spring Cloud Config`分布式配置中心（2021.05.28）
   - `Spring Cloud Bus`消息总线（2021.05.28）
@@ -31,5 +31,8 @@ Email：yhxiaobear@qq.com
   - `Spring Cloud Alibaba`入门（2021.05.28）
   - `Spring Cloud Alibaba Nacos`服务注册与配置（2021.05.31）
   - `Spring Cloud Alibaba Sentinel`服务熔断与限流（2021.06.08）
-- 新增`Java可视化报表学习笔记`文档（2021.08.11）
+
+- 新增**Java可视化报表学习笔记**（2021.08.11）
+
+- 新增**数据结构与算法笔记**（2021.08.17）
 

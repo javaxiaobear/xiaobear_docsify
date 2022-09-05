@@ -4,8 +4,6 @@
 
 ------
 
-个人博客地址：[Blog](http://www.xiaobear.cn/)
-
 CSDN地址：https://blog.csdn.net/Y_hanxiong
 
 GitHub地址： [GitHub](https://github.com/yhx1001)
